@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{494ACF17-93E5-450A-B438-42034B8C04B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataRepository", "DataRepository\DataRepository.csproj", "{5274F281-7C2F-48BB-BB32-251CFFC7028E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOs", "DTOs\DTOs.csproj", "{4F44A7ED-6C84-4F4B-B5E5-869E3449A7E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{494ACF17-93E5-450A-B438-42034B8C04B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{494ACF17-93E5-450A-B438-42034B8C04B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{494ACF17-93E5-450A-B438-42034B8C04B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5274F281-7C2F-48BB-BB32-251CFFC7028E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5274F281-7C2F-48BB-BB32-251CFFC7028E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5274F281-7C2F-48BB-BB32-251CFFC7028E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5274F281-7C2F-48BB-BB32-251CFFC7028E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F44A7ED-6C84-4F4B-B5E5-869E3449A7E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F44A7ED-6C84-4F4B-B5E5-869E3449A7E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F44A7ED-6C84-4F4B-B5E5-869E3449A7E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F44A7ED-6C84-4F4B-B5E5-869E3449A7E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
