@@ -14,8 +14,9 @@ public class User : BaseEntity
     public UserType UserType { get; set; } = UserType.User;
     public int Account { get; set; }
     
-    public virtual ICollection<Transfer> Transfers { get; set; }
+    public virtual ICollection<Subscription> Subscriptions { get; set; }
     public virtual ICollection<Category> CustomCategories { get; set; }
+    public virtual ICollection<Transfer> Transfers { get; set; }
 }
 
 public class UserConfiguration : BaseEntityTypeConfiguration<User>
@@ -29,9 +30,13 @@ public class UserConfiguration : BaseEntityTypeConfiguration<User>
             .HasForeignKey(c => c.CreatorId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasMany<Transfer>(u => u.Transfers)
+        builder.HasMany<Subscription>(u => u.Subscriptions)
             .WithOne(t => t.User)
             .HasForeignKey(t => t.UserId)
             .OnDelete(DeleteBehavior.NoAction);
+
+        builder.HasMany<Transfer>(u => u.Transfers)
+            .WithOne(t => t.User)
+            .HasForeignKey(t => t.UserId);
     }
 }

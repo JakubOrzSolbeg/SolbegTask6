@@ -10,7 +10,7 @@ public class Category : BaseEntity
     public bool IsIncome { get; set; } = false;
     public int? CreatorId { get; set; }
     public virtual User? Creator { get; set; }
-    public virtual ICollection<Transfer> Transfers { get; set; }
+    public virtual ICollection<Subscription> Transfers { get; set; }
 }
 
 public class CategoryConfiguration : BaseEntityTypeConfiguration<Category>

@@ -1,34 +1,29 @@
 using DataRepository.Entities.Base;
 using DTOs.Enums;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataRepository.Entities;
 
 public class Transfer : BaseEntity
 {
-    public DateTime TransferStart { get; set; }
-    public DateTime? TransferEnd { get; set; }
+    public DateTime TransferTime { get; set; } = DateTime.Now;
     public TransferType TransferType { get; set; } = TransferType.Single;
-    public int Amount { get; set; }
-    public string? Comment { get; set; }
-    
+    public int SubscriptionId { get; set; }
     public int UserId { get; set; }
-    public virtual User User { get; set; } = null!;
     
-    public int CategoryId { get; set; }
-    public virtual Category Category { get; set; }
+
+    public virtual User User { get; set; } = null!;
+    public virtual Subscription Subscription { get; set; } = null!;
+
 }
 
-public class TransferConfiguration : BaseEntityTypeConfiguration<Transfer>
+public class TransferTypeConfiguration : BaseEntityTypeConfiguration<Transfer>
 {
     public override void Configure(EntityTypeBuilder<Transfer> builder)
     {
         base.Configure(builder);
-        builder.HasOne<Category>(t => t.Category)
-            .WithMany(c => c.Transfers)
-            .HasForeignKey(t => t.CategoryId)
-            .OnDelete(DeleteBehavior.NoAction);
-
+        builder.HasOne<Subscription>(t => t.Subscription)
+            .WithMany(s => s.Transfers)
+            .HasForeignKey(t => t.SubscriptionId);
     }
 }

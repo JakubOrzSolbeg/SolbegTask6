@@ -16,7 +16,7 @@ public class MainDbContext1 : Microsoft.EntityFrameworkCore.DbContext
 
     public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<Transfer> Transfers { get; set; }
+    public DbSet<Subscription> Transfers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
