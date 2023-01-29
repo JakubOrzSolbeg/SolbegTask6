@@ -14,8 +14,8 @@ public class MainDbContext1 : Microsoft.EntityFrameworkCore.DbContext
         _configuration = configuration;
     }
 
-    public DbSet<User> Users { get; set; }
-    public DbSet<Category> Categories { get; set; }
+    public DbSet<BankUser> BankUsers { get; set; }
+    public DbSet<Category> SubCategories { get; set; }
     public DbSet<Subscription> Subscriptions { get; set; }
     public DbSet<Transfer> Transfers { get; set; }
     public DbSet<Config> Config { get; set; }
@@ -23,9 +23,14 @@ public class MainDbContext1 : Microsoft.EntityFrameworkCore.DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
+        modelBuilder.ApplyConfiguration(new SubscriptionConfiguration());
+        modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+        modelBuilder.ApplyConfiguration(new TransferConfiguration());
+        modelBuilder.ApplyConfiguration(new ConfigConfig());
         
-        modelBuilder.Entity<User>().HasData(
-            new User()
+        modelBuilder.Entity<BankUser>().HasData(
+            new BankUser()
             {
                 Id = 1,
                 Login = "admin",

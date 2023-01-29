@@ -74,7 +74,7 @@ public class TokenService : ITokenService
         return int.Parse(userId);
     }
 
-    public string GenerateToken(User user)
+    public string GenerateToken(BankUser user)
     {
         List<Claim> claims = new List<Claim>
         {

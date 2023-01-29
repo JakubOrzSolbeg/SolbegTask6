@@ -9,7 +9,7 @@ public class Category : BaseEntity
     public bool IsCustom { get; set; } = false;
     public bool IsIncome { get; set; } = false;
     public int? CreatorId { get; set; }
-    public virtual User? Creator { get; set; }
+    public virtual BankUser? Creator { get; set; }
     public virtual ICollection<Subscription> Transfers { get; set; }
 }
 

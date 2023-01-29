@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataRepository.Entities;
 
-public class User : BaseEntity
+public class BankUser : BaseEntity
 {
     public string Login { get; set; } = null!;
     public DateTime AccountCreated { get; set; } = DateTime.Now;
@@ -20,9 +20,9 @@ public class User : BaseEntity
     public virtual ICollection<Transfer> Transfers { get; set; }
 }
 
-public class UserConfiguration : BaseEntityTypeConfiguration<User>
+public class UserConfiguration : BaseEntityTypeConfiguration<BankUser>
 {
-    public override void Configure(EntityTypeBuilder<User> builder)
+    public override void Configure(EntityTypeBuilder<BankUser> builder)
     {
         base.Configure(builder);
         builder.HasIndex(user => user.Login).IsUnique();

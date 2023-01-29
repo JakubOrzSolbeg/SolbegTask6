@@ -6,5 +6,5 @@ public interface ITokenService
 {
     public bool IsTokenValid(string token);
     public int GetUserId(string token);
-    public string GenerateToken(User user);
+    public string GenerateToken(BankUser user);
 }

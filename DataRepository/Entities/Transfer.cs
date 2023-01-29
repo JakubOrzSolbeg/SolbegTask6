@@ -8,16 +8,16 @@ public class Transfer : BaseEntity
 {
     public DateTime TransferTime { get; set; } = DateTime.Now;
     public TransferType TransferType { get; set; } = TransferType.Single;
+    public int AccountAfter { get; set; } = 0;
     public int SubscriptionId { get; set; }
     public int UserId { get; set; }
     
-
-    public virtual User User { get; set; } = null!;
+    public virtual BankUser User { get; set; } = null!;
     public virtual Subscription Subscription { get; set; } = null!;
 
 }
 
-public class TransferTypeConfiguration : BaseEntityTypeConfiguration<Transfer>
+public class TransferConfiguration : BaseEntityTypeConfiguration<Transfer>
 {
     public override void Configure(EntityTypeBuilder<Transfer> builder)
     {

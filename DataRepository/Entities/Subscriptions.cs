@@ -9,20 +9,20 @@ public class Subscription : BaseEntity
 {
     public DateTime SubscriptionStart { get; set; }
     public DateTime? SubscriptionEnd { get; set; }
-    public string Name { get; set; }
+    public string Name { get; set; } = "Unknown";
     public SubscriptionType SubscriptionType { get; set; } = SubscriptionType.Monthly;
     public int Amount { get; set; }
     public string? Comment { get; set; }
     
     public int UserId { get; set; }
-    public virtual User User { get; set; } = null!;
+    public virtual BankUser User { get; set; } = null!;
     
     public int CategoryId { get; set; }
     public virtual Category Category { get; set; }
     public virtual ICollection<Transfer> Transfers { get; set; }
 }
 
-public class TransferConfiguration : BaseEntityTypeConfiguration<Subscription>
+public class SubscriptionConfiguration : BaseEntityTypeConfiguration<Subscription>
 {
     public override void Configure(EntityTypeBuilder<Subscription> builder)
     {

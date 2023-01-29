@@ -9,11 +9,11 @@ namespace Services.Implementations;
 
 public class AccountService : IAccountService
 {
-    private readonly IRepository<User> _accountsRepository;
+    private readonly IRepository<BankUser> _accountsRepository;
     private readonly ITokenService _tokenService;
     private readonly ITransferRepository _transferRepository;
 
-    public AccountService(ITokenService tokenService, IRepository<User> userRepository, ITransferRepository transferRepository)
+    public AccountService(ITokenService tokenService, IRepository<BankUser> userRepository, ITransferRepository transferRepository)
     {
         _accountsRepository = userRepository;
         _tokenService = tokenService;
@@ -34,7 +34,7 @@ public class AccountService : IAccountService
         
         string salt = RandomStringGenerator.GenerateRandomString(1);
         string passhash = Sha256HashGenerator.ComputeSha256Hash(registerCredentials.Password + salt);
-        var newUser = new User()
+        var newUser = new BankUser()
         {
             Login = registerCredentials.Login,
             Passhash = passhash,
