@@ -13,6 +13,7 @@ public class User : BaseEntity
     public string Salt { get; set; } = null!;
     public UserType UserType { get; set; } = UserType.User;
     public int Account { get; set; }
+    public int? SpendingLimit { get; set; }
     
     public virtual ICollection<Subscription> Subscriptions { get; set; }
     public virtual ICollection<Category> CustomCategories { get; set; }

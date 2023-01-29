@@ -16,13 +16,14 @@ public class MainDbContext1 : Microsoft.EntityFrameworkCore.DbContext
 
     public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<Subscription> Transfers { get; set; }
+    public DbSet<Subscription> Subscriptions { get; set; }
+    public DbSet<Transfer> Transfers { get; set; }
+    public DbSet<Config> Config { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         
-
         modelBuilder.Entity<User>().HasData(
             new User()
             {
@@ -34,6 +35,13 @@ public class MainDbContext1 : Microsoft.EntityFrameworkCore.DbContext
             }
             // password zaq12wsx
         );
+
+        modelBuilder.Entity<Config>().HasData(
+            new Config()
+            {
+                Index = 1,
+                LastTimeTransferCount = DateTime.Now
+            });
 
         modelBuilder.Entity<Category>().HasData(
             new Category() { Id = 1, CreatorId = 1, IsCustom = false, Name = "Food" },

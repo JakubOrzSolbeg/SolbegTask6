@@ -14,6 +14,8 @@ public static class Setup
         services.AddScoped<IRepository<User>, Repository<User>>();
         services.AddScoped<IRepository<Category>, Repository<Category>>();
         services.AddScoped<IRepository<Subscription>, Repository<Subscription>>();
+        services.AddScoped<ITransferRepository, TransferRepository>();
+        services.AddScoped<IConfigRepository, ConfigRepository>();
         return services;
     }
 }

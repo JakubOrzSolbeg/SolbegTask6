@@ -9,6 +9,7 @@ public class Subscription : BaseEntity
 {
     public DateTime SubscriptionStart { get; set; }
     public DateTime? SubscriptionEnd { get; set; }
+    public string Name { get; set; }
     public SubscriptionType SubscriptionType { get; set; } = SubscriptionType.Monthly;
     public int Amount { get; set; }
     public string? Comment { get; set; }
