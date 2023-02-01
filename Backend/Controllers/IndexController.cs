@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers;
 
 [ApiController]
-[Route("/")]
+[Route("/[action]")]
 public class IndexController : ControllerBase
 {
 
@@ -11,5 +11,12 @@ public class IndexController : ControllerBase
     public IActionResult Index()
     {
         return Redirect("swagger/index.html");
+    }
+
+
+    [HttpGet]
+    public ActionResult<int> Ping()
+    {
+        return new Random().Next();
     }
 }
