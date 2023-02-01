@@ -5,8 +5,8 @@ namespace DTOs.Responses;
 public class SubscriptionDetails
 {
     public int SubscriptionId { get; set; }
-    public string SubscriptionName { get; set; }
-    public string CategoryName { get; set; }
+    public string SubscriptionName { get; set; } = "unknown";
+    public string CategoryName { get; set; } = "unknown";
     public string? Comment { get; set; }
     public SubscriptionType SubscriptionType { get; set; }
     public int Amount { get; set; }

@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,400;0,500;1,300&family=Merienda:wght@300;500&display=swap');
+
+:root {
+    --header-font-color: #053a49;;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: rgb(247,255,255);
+    background: radial-gradient(circle, rgba(247,255,255,1) 5%, rgb(216, 243, 251) 100%);
+}
+
+main{
+    min-height: 100vh;
+    position: relative;
+}
+
+.NavBar{
+    position: sticky;
+    height: 8%;
+    display: flex;
+    padding: 5px 10px 5px 10px;
+    flex-direction: row;
+    justify-content: flex-end;
+    background: rgb(247,255,255);
+    background: linear-gradient(0deg, rgba(247,255,255,1) 0%, rgba(124,181,205,1) 4%);
+}
+
+.logo{
+    margin-right: auto;
+    cursor: pointer;
+    font-family: 'Merienda', cursive;
+    color: var(--header-font-color);
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    height: 5%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--header-font-color);
+    background: rgb(247,255,255);
+    background: linear-gradient(180deg, rgba(247,255,255,1) 0%, rgba(124,181,205,1) 4%);
+}
+
+
+@keyframes anim-lineUp {
+    0% {
+        opacity: 0;
+        transform: translateY(80%);
+    }
+    20% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+.landing_page{
+    background-image:url("img/Wallet.gif");
+    background-repeat:space;
+    opacity: 0.5;
+    position: absolute;
+    resize: both;
+    background-size: cover;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.main_panel{
+    background: rgba(0,0,0,0.5);
+    border-radius: 30px;
+    position: relative;
+    width: 75%;
+    top: 55%;
+    left: 12%;
+    font-size: 3em;
+    padding: 10px;
+    font-family: "Jost Regur", serif;
+}
+
+.main_panel.animate_panel{
+    transition-delay: 1s;
+    animation: 1.8s anim-lineUp ease-out;
+}
+
+.main_panel.animate_panel.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+

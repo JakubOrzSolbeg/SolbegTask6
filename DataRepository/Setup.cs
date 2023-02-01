@@ -13,7 +13,7 @@ public static class Setup
         services.AddDbContext<MainDbContext1>();
         services.AddScoped<IRepository<BankUser>, Repository<BankUser>>();
         services.AddScoped<IRepository<Category>, Repository<Category>>();
-        services.AddScoped<IRepository<Subscription>, Repository<Subscription>>();
+        services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
         services.AddScoped<ITransferRepository, TransferRepository>();
         services.AddScoped<IConfigRepository, ConfigRepository>();
         return services;

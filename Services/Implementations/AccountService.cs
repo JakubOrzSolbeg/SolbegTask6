@@ -38,7 +38,10 @@ public class AccountService : IAccountService
         {
             Login = registerCredentials.Login,
             Passhash = passhash,
-            Salt = salt
+            Salt = salt,
+            AccountCreated = DateTime.Now,
+            Account = 0,
+            SpendingLimit = null
         };
         await _accountsRepository.Add(newUser);
         string token = _tokenService.GenerateToken(newUser);
@@ -98,14 +101,34 @@ public class AccountService : IAccountService
             Permissions = user.UserType.ToString(),
             RegisterTime = user.AccountCreated,
             DailySpendingLimit = user.SpendingLimit,
-            Balance = user.Account,
-            TodaySpendings = await _transferRepository.GetUserTodaySpending(userId)
+            Balance = await _transferRepository.GetCurrentUserAccount(userId),
+            TodayAccountChange = await _transferRepository.GetUserTodaySpending(userId)
         };
         
         return new ApiResultBase<AccountDetails>()
         {
             IsSuccess = true,
             Body = result
+        };
+    }
+
+    public async Task<ApiResultBase<bool>> EditAccount(int userId, ChangeSettingsRequest accountCreds)
+    {
+        var user = await _accountsRepository.GetById(userId);
+        if (user == null)
+        {
+            return new ApiResultBase<bool>()
+            {
+                IsSuccess = false,
+                Errors = "Account does not exists"
+            };
+        }
+
+        user.SpendingLimit = accountCreds.NewDailyLimit;
+        await _accountsRepository.Update(user);
+        return new ApiResultBase<bool>()
+        {
+            IsSuccess = true
         };
     }
 }
