@@ -51,15 +51,13 @@ builder.Services.AddSwaggerGen(options =>
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 
-builder.Services.AddCors(p => p.AddPolicy(myCorsPolicyName, build =>
-{
-    foreach (var allowedHost in builder.Configuration.GetSection("AllowedCrossOrigin").Get<List<string>>())
-    {
-        Console.WriteLine(allowedHost);
-        build.WithOrigins(allowedHost).AllowAnyMethod().AllowAnyHeader();
-    }
-
-}));
+builder.Services.AddCors(p => p.AddPolicy(myCorsPolicyName, 
+    build =>
+        {
+            build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+        }
+    )
+);
 
 var app = builder.Build();
 
@@ -67,11 +65,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "SolbegTask5Swagger"));
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "SolbegTask6Swagger"));
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors(myCorsPolicyName);
 app.UseAuthentication();
 app.UseAuthorization();
 
