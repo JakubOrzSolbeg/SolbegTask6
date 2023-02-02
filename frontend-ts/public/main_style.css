@@ -9,11 +9,13 @@ body{
     padding: 0;
     background: rgb(247,255,255);
     background: radial-gradient(circle, rgba(247,255,255,1) 5%, rgb(216, 243, 251) 100%);
+    font-family: 'Jost', sans-serif;
 }
 
 main{
     min-height: 100vh;
     position: relative;
+    font-family: "Jost Regur", serif;
 }
 
 .NavBar{
@@ -35,9 +37,9 @@ main{
 }
 
 footer{
-    position: absolute;
+    /*position: absolute;*/
     bottom: 0;
-    height: 5%;
+    height: 5vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -67,9 +69,9 @@ footer{
 }
 
 .landing_page{
-    background-image:url("img/Wallet.gif");
+    background-image:url("img/background.jpg");
+    /*opacity: 0.5;*/
     background-repeat:space;
-    opacity: 0.5;
     position: absolute;
     resize: both;
     background-size: cover;
@@ -81,15 +83,21 @@ footer{
 }
 
 .main_panel{
-    background: rgba(0,0,0,0.5);
+    background: rgba(235, 241, 240, 0.9);
     border-radius: 30px;
+    opacity: 1;
     position: relative;
     width: 75%;
-    top: 55%;
+    top: 45%;
     left: 12%;
     font-size: 3em;
-    padding: 10px;
+    padding: 20px;
     font-family: "Jost Regur", serif;
+    color: var(--header-font-color);
+}
+
+.main_panel > form{
+    font-size: 0.6em;
 }
 
 .main_panel.animate_panel{
@@ -100,5 +108,272 @@ footer{
 .main_panel.animate_panel.visible {
     opacity: 1;
     transform: translate(0, 0);
+}
+
+.login-action-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.login-action-buttons > button, form > input[type="submit"], .load-more-button{
+    width: 40%;
+    border-radius: 10px;
+    color: var(--header-font-color);
+    background: rgba(194, 222, 216, 0.2);
+    cursor: pointer;
+    border: solid 3px var(--header-font-color);
+    transition: 0.4s;
+}
+
+#return-button{
+    font-size: 2rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#return-button:hover, .load-more-button{
+    filter: brightness(2);
+}
+
+.login-action-buttons > button:hover, form > input[type="submit"]:hover{
+    filter: brightness(1.8);
+    transform: scale(1.1);
+}
+
+
+
+.loader {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+.loader div {
+    position: absolute;
+    background: rgba(124,181,205,1);
+    opacity: 1;
+    border-radius: 50%;
+    animation: loading 1.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.loader div:nth-child(2) {
+    animation-delay: -.7s;
+}
+@keyframes loading {
+    0% {
+        top: 28px;
+        left: 28px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: -1px;
+        left: -1px;
+        width: 58px;
+        height: 58px;
+        opacity: 0;
+    }
+}
+
+#new-payment-button{
+    font-size: 3em;
+    color: var(--header-font-color);
+    position: absolute;
+    display: block;
+    bottom: 20px;
+    right: 15px;
+}
+
+#new-payment-button:hover{
+    filter: brightness(1.1);
+
+
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form > input{
+    margin: 5px;
+}
+
+form > input[type="text"], form > label > input, form > input[type="password"],
+form > input[type="number"], input[type="radio"]{
+    border: none;
+    font-size: 1.7em;
+    color: var(--header-font-color);
+    border-bottom: 1px solid var(--header-font-color);
+    margin: 5px;
+    background: none;
+}
+
+input[type='radio']{
+    -ms-transform: scale(1.6); /* IE 9 */
+    transform: scale(1.6);
+}
+
+form > label{
+    font-size: 1.6em;
+}
+
+/*.content > form{*/
+/*    font-size: 1.3em;*/
+/*}*/
+
+#form-errors{
+    color: #cb0101;
+}
+
+.content{
+    padding: 18px;
+    min-height: 100vh;
+}
+
+.center-div{
+    display: flex;
+    justify-content: center;
+}
+
+.main_panel > .login-action-buttons > button, .main_panel > .primary-form-button{
+    font-size: 0.7em;
+}
+
+.account-cart, .subscription-list, .payment-list{
+    margin: 20px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    filter: brightness(1.05);
+    border-radius: 20px;
+    background: rgb(209, 235, 252);
+    padding: 10px;
+    position: relative;
+}
+
+.subscription-list > h2, .payment-list > h2{
+    display: flex;
+    justify-content: center;
+}
+
+.payment-list > h2, .settings-panel > h2, .transfer-panel > h2, .transfer-panel > h1{
+    color: var(--header-font-color);
+}
+
+.welcome-text{
+    display: flex;
+    justify-content: center;
+}
+
+.subscription-list.green > h2{
+    color: #00540d;
+}
+
+.subscription-list.red > h2{
+    color: #6c0202;
+}
+
+.subscription-card, .payment-card{
+    margin: 10px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0, rgba(0, 0, 0, 0.06) 0 1px 2px 0;
+    padding: 10px;
+}
+
+.payment-list{
+    overflow-y: scroll;
+    max-height: 40%;
+}
+
+.payment-card{
+    background: #d5eef8;
+}
+
+.subscription-name, .payment-name{
+    font-size: 2em;
+}
+
+
+.action-buttons{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.subscription-amount, .payment-amount{
+    font-size: 1.4em;
+}
+
+.payment-amount.red{
+    color: #6c0202;
+}
+
+.payment-amount.green{
+    color: #00540d;
+}
+
+.subscription-time, .payment-time{
+    position: absolute;
+    font-size: 1.1em;
+    right: 10px;
+    top: 10px;
+}
+
+.subscription-card.green{
+    background: rgba(209, 252, 210, 0.4);
+}
+
+.subscription-card.red{
+    background: rgba(252, 209, 209, 0.2);
+}
+
+h1 {
+    color: var(--header-font-color);
+}
+
+.balance{
+    font-size: 5em;
+}
+
+
+.account-change{
+    font-size: 1.3em;
+
+}
+.account-change.green{
+    color: #039b16;
+}
+
+.account-change.red{
+    color: #9b0303;
+}
+
+.spending-limit{
+    margin-left: 20px;
+    font-size: 1.1em;
+}
+
+.nav-button, .transparent-button{
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: var(--header-font-color);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.transparent-button.red{
+    color: #9b0303;
+}
+
+.nav-button:hover{
+    filter: brightness(1.3);
+    transform: scale(1.2);
 }
 

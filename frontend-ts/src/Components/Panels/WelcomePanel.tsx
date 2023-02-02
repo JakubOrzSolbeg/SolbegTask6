@@ -15,9 +15,11 @@ export default function WelcomePanel(){
 
     return(
         <div className={"main_panel animate_panel"}>
-            <p> Welcome in your personal banking app. We will help you keep track of all your subscriptions. </p>
-            <button id={"login_button"} onClick={move_to_login_page}> Log in </button>
-            <button id={"register_button"} onClick={move_to_register_page}> Register </button>
+            <div> Welcome in your personal banking app. We will help you keep track of all your subscriptions. </div>
+            <div className={"login-action-buttons"}>
+                <button id={"login_button"} onClick={move_to_login_page}> Log in </button>
+                <button id={"register_button"} onClick={move_to_register_page}> Register </button>
+            </div>
         </div>
     );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 import WelcomePanel from "../Components/Panels/WelcomePanel";
 import LoginForm from "../Components/Forms/LoginForm";
+import RegisterForm from "../Components/Forms/RegisterForm";
 
 export default function NotLoggedApp(){
 
@@ -18,7 +19,7 @@ export default function NotLoggedApp(){
                             }
                         />
                         <Route path={"/register"} element={
-                            <p> Lol </p>
+                            <RegisterForm />
                         }
                         />
                         <Route path='*' element={

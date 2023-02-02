@@ -8,7 +8,7 @@ public class SubscriptionDetails
     public string SubscriptionName { get; set; } = "unknown";
     public string CategoryName { get; set; } = "unknown";
     public string? Comment { get; set; }
-    public SubscriptionType SubscriptionType { get; set; }
+    public string SubscriptionType { get; set; }
     public int Amount { get; set; }
     public DateTime StartTime { get; set; }
     public DateTime? EndTime { get; set; }

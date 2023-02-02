@@ -131,4 +131,27 @@ public class AccountService : IAccountService
             IsSuccess = true
         };
     }
+
+    public async Task<ApiResultBase<AccountSettings>> GetAccountSettings(int userId)
+    {
+        BankUser? user = await _accountsRepository.GetById(userId);
+        if (user == null)
+        {
+            return new ApiResultBase<AccountSettings>()
+            {
+                IsSuccess = false,
+                Errors = "User does not exists"
+            };
+        }
+
+        return new ApiResultBase<AccountSettings>()
+        {
+            IsSuccess = true,
+            Body = new AccountSettings()
+            {
+                MaxDailySpending = user.SpendingLimit
+            }
+        };
+
+    }
 }

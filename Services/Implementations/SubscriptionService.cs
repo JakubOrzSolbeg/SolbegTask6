@@ -25,7 +25,6 @@ public class SubscriptionService : ISubscriptionService
     
     public async Task<ApiResultBase<CategoriesOverview>> GetCategories(int userId)
     {
-        Console.WriteLine(userId);
         var categories = (await _categoryRepository.GetAllByPredicate(category =>
                 (!category.IsCustom) || (category.IsCustom && category.CreatorId.Equals(userId))))
             .GroupBy(category => category.IsIncome)
@@ -79,7 +78,7 @@ public class SubscriptionService : ISubscriptionService
             EndTime = sub.SubscriptionEnd,
             Amount = sub.Amount,
             SubscriptionName = sub.Name,
-            SubscriptionType = sub.SubscriptionType,
+            SubscriptionType = sub.SubscriptionType.ToString(),
             Comment = sub.Comment,
             CategoryName = sub.Category.Name
         };

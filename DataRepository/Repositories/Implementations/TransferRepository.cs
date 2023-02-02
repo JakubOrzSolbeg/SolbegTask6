@@ -38,6 +38,7 @@ public class TransferRepository : Repository<Transfer>, ITransferRepository
     {
         return await MainDbContext.Transfers
             .Where(transfer => transfer.UserId.Equals(userId))
+            .OrderByDescending(transfer => transfer.Id)
             .Skip(startFrom)
             .Take(endTo - startFrom)
             .Include(transfer => transfer.Subscription)

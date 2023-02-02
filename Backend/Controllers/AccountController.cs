@@ -1,3 +1,4 @@
+using System.Net;
 using Backend.Utils;
 using DTOs.Requests;
 using DTOs.Responses;
@@ -8,6 +9,7 @@ using Services.Interfaces;
 namespace Backend.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("[controller]/[action]")]
 public class AccountsController : ControllerBase
 {
@@ -19,6 +21,7 @@ public class AccountsController : ControllerBase
         _tokenService = tokenService;
     }
     [HttpPost]
+    [AllowAnonymous]
     public async Task<ActionResult<ApiResultBase<string>>> Register(LoginCredentials registerCredentials)
     {
         var registerResult = await _accountService.RegisterUser(registerCredentials);
@@ -26,6 +29,7 @@ public class AccountsController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<ActionResult<ApiResultBase<string>>> Login(LoginCredentials loginCredentials)
     {
         var loginResult = await _accountService.LoginUser(loginCredentials);
@@ -33,7 +37,6 @@ public class AccountsController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
     public async Task<ActionResult<ApiResultBase<AccountDetails>>> AccountDetails()
     {
         int userId = _tokenService.GetUserId(HttpContext);
@@ -41,10 +44,16 @@ public class AccountsController : ControllerBase
     }
 
     [HttpPut]
-    [Authorize]
     public async Task<ActionResult<ApiResultBase<bool>>> EditAccount(ChangeSettingsRequest newcreds)
     {
         int userId = _tokenService.GetUserId(HttpContext);
         return await _accountService.EditAccount(userId, newcreds);
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<ApiResultBase<AccountSettings>>> Settings()
+    {
+        int userId = _tokenService.GetUserId(HttpContext);
+        return await _accountService.GetAccountSettings(userId);
     }
 }
